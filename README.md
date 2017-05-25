@@ -12,7 +12,7 @@ A cross-platform customizable loading placeholder component for React Native.
 
 ## Demo
 
-<a href="https://raw.githubusercontent.com/zeljkoX/react-native-loading-placeholder/master/demo/demo.mp4"><img src="https://raw.githubusercontent.com/zeljkoX/react-native-loading-placeholder/master/demo/demo.gif" width="360"></a>
+<img src="https://github.com/zeljkoX/react-native-loading-placeholder/blob/master/demo/react-native-loading-placeholder.gif" width="360">
 
 
 ## Installation
