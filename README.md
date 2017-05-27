@@ -1,13 +1,14 @@
 # React Native Loading Placeholder [![npm version](https://img.shields.io/npm/v/react-native-loading-placeholder.svg?style=flat)](https://www.npmjs.com/package/react-native-loading-placeholder)
 
-A cross-platform customizable loading placeholder component for React Native.
+A customizable loading placeholder component for React Native.
 
 - Checkout the [example/](https://github.com/zeljkoX/react-native-loading-placeholder/tree/master/example) folder for source code.
 
 
 ## Features
 
-- Highly customizable
+- Highly customizable design
+- Async feature to resolve whole PlaceholderContainer content or just Placeholder elements.
 
 
 ## Demo
@@ -18,7 +19,6 @@ A cross-platform customizable loading placeholder component for React Native.
 ## Installation
 
 ```sh
-yarn add react-native-loading-placeholder
 npm install react-native-loading-placeholder
 ```
 
@@ -28,14 +28,47 @@ npm install react-native-loading-placeholder
 ```js
 
 import React, { Component } from 'react';
+import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-import { PlaceholderContainer, Placeholder, AsyncComponent } from 'react-native-loading-placeholder';
+  PlaceholderContainer,
+  Placeholder,
+  AsyncComponent
+} from './react-native-loading-placeholder';
 import LinearGradient from 'react-native-linear-gradient';
+
+export default class Test extends Component {
+  loadingComponent: Promise<React.Element<*>>;
+  loadingComponent1: Promise<*>;
+  constructor(props) {
+    super(props);
+  }
+  componentWillMount(): void {
+    this.loadingComponent = new Promise(resolve => {
+      setTimeout(() => {
+        resolve(
+          <View
+            style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+          >
+            <Text>Resolved</Text>
+          </View>
+        );
+      }, 6000);
+    });
+    this.loadingComponent1 = new Promise(resolve => {
+      setTimeout(() => {
+        resolve();
+      }, 8000);
+    });
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <PlaceholderExample loader={this.loadingComponent} />
+        <PlaceholderExample1 loader={this.loadingComponent1} />
+      </View>
+    );
+  }
+}
 
 const Gradient = (): React.Element<*> => {
   return (
@@ -51,48 +84,136 @@ const Gradient = (): React.Element<*> => {
   );
 };
 
-const PlaceholderExample = () => {
+const PlaceholderExample = ({
+  loader
+}: {
+  loader: Promise<*>
+}): React.Element<*> => {
   return (
     <PlaceholderContainer
-      style={{ width: 200 }}
-      duration={3000}
-      animatedComponent={<Gradient/>}
+      style={styles.placeholderContainer}
+      animatedComponent={<Gradient />}
+      duration={1000}
+      delay={1000}
+      loader={loader}
     >
+      <View style={{ flexDirection: 'row' }}>
+        <Placeholder style={[styles.placeholder, { width: 50, height: 50 }]} />
+        <View
+          style={{
+            flexDirection: 'column',
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          <Placeholder
+            style={[
+              styles.placeholder,
+              {
+                width: '50%',
+                height: 10
+              }
+            ]}
+          />
+          <Placeholder
+            style={[
+              styles.placeholder,
+              {
+                width: '35%',
+                height: 7
+              }
+            ]}
+          />
+        </View>
+      </View>
+
       <Placeholder
-        style={[styles.placeholder, { width: 50, height: 50 }]}
+        style={[styles.placeholder, { marginTop: 20, width: '80%' }]}
       />
-      <Placeholder
-        style={[styles.placeholder, { width: 200, height: 10 }]}
-      />
-      <Placeholder
-        style={[styles.placeholder, { width: 200, height: 10 }]}
-      />
-      <Placeholder
-        style={[styles.placeholder, { width: 200, height: 10 }]}
-      />
-      <Placeholder
-        style={[styles.placeholder, { width: 50, height: 50, left: 100 }]}
-      />
+      <Placeholder style={[styles.placeholder, { width: '90%' }]} />
+      <Placeholder style={[styles.placeholder, { width: '50%' }]} />
     </PlaceholderContainer>
-  )
-}
+  );
+};
+
+const PlaceholderExample1 = ({
+  loader
+}: {
+  loader: Promise<*>
+}): React.Element<*> => {
+  return (
+    <PlaceholderContainer
+      style={styles.placeholderContainer}
+      animatedComponent={<Gradient />}
+      duration={1000}
+      delay={1000}
+      loader={loader}
+      replace={true}
+    >
+      <View style={{ flexDirection: 'column' }}>
+        <View style={styles.row}>
+          <Text style={{ width: '20%', textAlign: 'center' }}>Name</Text>
+          <Placeholder
+            style={[
+              styles.placeholder,
+              {
+                width: '50%',
+                height: 10
+              }
+            ]}
+          >
+            <Text>John Doe</Text>
+          </Placeholder>
+
+        </View>
+
+        <View style={{ flexDirection: 'row' }}>
+          <View style={styles.row}>
+            <Text style={{ width: '20%', textAlign: 'center' }}>Age</Text>
+            <Placeholder
+              style={[
+                styles.placeholder,
+                {
+                  width: '15%',
+                  height: 10
+                }
+              ]}
+            >
+              <Text>47</Text>
+            </Placeholder>
+          </View>
+        </View>
+      </View>
+    </PlaceholderContainer>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
     paddingTop: 25,
-    backgroundColor: '#fff'
+    backgroundColor: '#f6f7f8'
+  },
+  placeholderContainer: {
+    width: '90%',
+    backgroundColor: '#fff',
+    height: 200
   },
   placeholder: {
+    height: 8,
+    marginTop: 6,
+    marginLeft: 15,
     alignSelf: 'flex-start',
-    margin: 5,
     justifyContent: 'center',
-    backgroundColor: '#eeeeee',
+    backgroundColor: '#eeeeee'
+  },
+  row: {
+    flexDirection: 'row',
+    width: '100%'
   }
 });
-
 ```
 
 
@@ -107,8 +228,11 @@ Container component responsible for orchestrating animations in placeholder comp
 #### Props
 
 - `duration` - Animated timing 'speed'
+- `delay` - Delay before starting next placeholder animation
 - `style` - Container style,
 - `animatedComponent` -  Animated component (example: gradient component)
+- `loader` - Promise that resolves to React Component that is going to be displayed instead placeholders. Note: If replace props is set to true loader just need to resolve.
+- `replace` - Flag to indicate if placeholder elements are going to be replaced with its child elements on loader status resolved
 
 
 ### `<Placeholder />`
@@ -118,13 +242,3 @@ Component that displays animated component
 #### Props
 
 - `style` - Object
-
-
-### `<AsyncComponent />`
-
-Component that renders Children until loader prop is resolved with Component to display
-
-#### Props
-
-- `loader` - Promise that resolves with React Component
-- `renderPlaceholder` - PlaceholderContainer

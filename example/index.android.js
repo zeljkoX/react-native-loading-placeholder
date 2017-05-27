@@ -12,7 +12,7 @@ import {
   View
 } from 'react-native';
 
-import App from './app';
+import App from './App';
 
 export default class reactNativeLoadingPlaceholder extends Component {
   render() {

@@ -7,10 +7,11 @@
 		"test": "jest"
 	},
 	"dependencies": {
+		"prop-types": "^15.5.10",
 		"react": "16.0.0-alpha.6",
 		"react-native": "0.44.0",
 		"react-native-linear-gradient": "^2.0.0",
-		"react-native-loading-placeholder":"0.0.1"
+		"react-native-loading-placeholder": "0.0.2"
 	},
 	"devDependencies": {
 		"babel-jest": "20.0.3",
