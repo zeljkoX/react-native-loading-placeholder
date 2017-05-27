@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/zeljkoX/react-native-loading-placeholder/issues"
   },
-  "homepage": "https://github.com/zeljkoX/react-native-loading-placeholder#readme"
+  "homepage": "https://github.com/zeljkoX/react-native-loading-placeholder#readme",
+  "devDependencies": {
+    "prop-types": "^15.5.10"
+  }
 }
