@@ -3,9 +3,6 @@
   "version": "0.0.2",
   "description": "Placeholder component for React Native",
   "main": "src/index.js",
-  "files": [
-    "src/"
-  ],
   "keywords": [
     "react-native",
     "react-component",
