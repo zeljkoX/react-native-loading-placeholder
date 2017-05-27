@@ -33,7 +33,7 @@ import {
   PlaceholderContainer,
   Placeholder,
   AsyncComponent
-} from './react-native-loading-placeholder';
+} from 'react-native-loading-placeholder';
 import LinearGradient from 'react-native-linear-gradient';
 
 export default class Test extends Component {
