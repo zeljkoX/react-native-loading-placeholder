@@ -28,8 +28,7 @@ import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 import {
   PlaceholderContainer,
-  Placeholder,
-  AsyncComponent
+  Placeholder
 } from 'react-native-loading-placeholder';
 import LinearGradient from 'react-native-linear-gradient';
 
