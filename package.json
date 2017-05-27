@@ -6,12 +6,6 @@
   "files": [
     "src/"
   ],
-  "scripts": {
-    "test": "jest",
-    "flow": "flow",
-    "lint": "eslint **/*.js",
-    "format": "eslint --fix **/*.js"
-  },
   "keywords": [
     "react-native",
     "react-component",
@@ -30,37 +24,5 @@
   "bugs": {
     "url": "https://github.com/zeljkoX/react-native-loading-placeholder/issues"
   },
-  "homepage": "https://github.com/zeljkoX/react-native-loading-placeholder#readme",
-  "devDependencies": {
-    "babel-eslint": "^7.2.3",
-    "babel-jest": "^19.0.0",
-    "babel-preset-react-native": "^1.9.1",
-    "enzyme": "^2.8.2",
-    "enzyme-to-json": "^1.5.1",
-    "eslint": "^3.19.0",
-    "eslint-config-prettier": "^1.7.0",
-    "eslint-plugin-babel": "^4.1.1",
-    "eslint-plugin-flowtype": "^2.32.1",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-prettier": "^2.0.1",
-    "eslint-plugin-react": "^7.0.0",
-    "eslint-plugin-react-native": "^2.3.2",
-    "flow-bin": "^0.38.0",
-    "jest": "^19.0.2",
-    "prettier": "^1.3.1",
-    "react": "~15.4.1",
-    "react-addons-test-utils": "~15.4.1",
-    "react-dom": "~15.4.1",
-    "react-native": "~0.42.0",
-    "react-test-renderer": "~15.4.1"
-  },
-  "jest": {
-    "preset": "react-native",
-    "modulePathIgnorePatterns": [
-      "<rootDir>/example/node_modules"
-    ]
-  },
-  "dependencies": {
-    "prop-types": "^15.5.8"
-  }
+  "homepage": "https://github.com/zeljkoX/react-native-loading-placeholder#readme"
 }
