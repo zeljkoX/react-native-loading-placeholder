@@ -2,9 +2,6 @@
 
 A customizable loading placeholder component for React Native.
 
-- Checkout the [example/](https://github.com/zeljkoX/react-native-loading-placeholder/tree/master/example) folder for source code.
-
-
 ## Features
 
 - Highly customizable design
