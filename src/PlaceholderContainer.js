@@ -107,12 +107,14 @@ export default class PlaceholderContainer extends Component {
     Animated.sequence([
       Animated.timing(this.position, {
         toValue: stopPosition || screenWidth,
-        duration: duration
+        duration: duration, 
+        useNativeDriver: true
       }),
       Animated.timing(this.position, {
         toValue: startPosition || 0,
         duration: 0,
-        delay: delay || 0
+        delay: delay || 0, 
+        useNativeDriver: true
       })
     ]).start(cb);
   };
