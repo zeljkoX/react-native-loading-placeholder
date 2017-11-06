@@ -101,27 +101,27 @@ export default class PlaceholderContainer extends Component {
     );
   }
 
-  _triggerAnimation = (cb: Function): void => {
+  _triggerAnimation = (): void => {
     const { duration, delay } = this.props;
     const { startPosition, stopPosition } = this.state;
-    Animated.sequence([
+    Animated.loop(Animated.sequence([
       Animated.timing(this.position, {
         toValue: stopPosition || screenWidth,
-        duration: duration, 
+        duration: duration,
         useNativeDriver: true
       }),
       Animated.timing(this.position, {
         toValue: startPosition || 0,
         duration: 0,
-        delay: delay || 0, 
+        delay: delay || 0,
         useNativeDriver: true
       })
-    ]).start(cb);
+    ])).start();
   };
 
   _startAndRepeat = (): void => {
     const { Component } = this.state;
-    !Component && this._triggerAnimation(this._startAndRepeat);
+    !Component && this._triggerAnimation();
   };
 
   _measureView = (viewName: string, event: Object): void => {
