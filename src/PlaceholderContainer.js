@@ -75,6 +75,11 @@ export default class PlaceholderContainer extends Component {
         !replace ? this.setState({ Component }) : this._replacePlaceholders();
       });
   }
+
+  componentWillUnmount(): void {
+    this.position.stopAnimation();
+  }
+
   render(): React.Element<*> {
     const { style, elements, animatedComponent, children } = this.props;
     const { Component, isAnimatedComponentMeasured } = this.state;
