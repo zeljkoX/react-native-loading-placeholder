@@ -1,17 +1,9 @@
 {
   "name": "react-native-loading-placeholder",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Placeholder component for React Native",
   "main": "src/index.js",
-  "keywords": [
-    "react-native",
-    "react-component",
-    "react-native",
-    "ios",
-    "android",
-    "placeholder",
-    "loading"
-  ],
+  "keywords": ["react-native", "react-component", "react-native", "ios", "android", "placeholder", "loading"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zeljkoX/react-native-loading-placeholder.git"
