@@ -113,13 +113,15 @@ export default class PlaceholderContainer extends Component {
       Animated.timing(this.position, {
         toValue: stopPosition || screenWidth,
         duration: duration,
-        useNativeDriver: true
+        useNativeDriver: true,
+        isInteraction: false
       }),
       Animated.timing(this.position, {
         toValue: startPosition || 0,
         duration: 0,
         delay: delay || 0,
-        useNativeDriver: true
+        useNativeDriver: true,
+        isInteraction: false
       })
     ])).start();
   };
